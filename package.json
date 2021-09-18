@@ -4,8 +4,26 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
+    "start": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "fast-csv": "^4.3.6",
+    "firebase-admin": "^9.11.1",
+    "fs": "*",
+    "fuse.js": "^6.4.6",
+    "multer": "^1.4.3",
+    "node-tesseract-ocr": "^2.2.1",
+    "node-wordnet": "^0.1.12",
+    "path": "^0.12.7",
+    "pg": "^8.7.1",
+    "pg-connection-string": "^2.5.0",
+    "wndb-with-exceptions": "^3.0.2"
+  }
 }

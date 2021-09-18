@@ -1,0 +1,86 @@
+Name,ShelfLife,DateType
+Beef,6,month
+Lamb,6,month
+Steak,6,month
+Pork,4,month
+Sausage,1,month
+Mince Beef,2,month
+Ham,1,month
+Salami,1,month
+Salmon,2,month
+Cod,3,month
+Mackerel,3,month
+Carp,3,month
+Bass,3,month
+Shad,3,month
+Trout,3,month
+Tuna,3,month
+Halibut,3,month
+Pike,3,month
+Crab,6,month
+Oyster,6,month
+Mince Chicken,3,month
+Chicken Nugget,3,month
+Gravy,2,month
+Milk,1,week
+Cream,5,day
+Icecream,1,month
+Yogurt,1,week
+Cheese,1,week
+Butter,2,month
+Margarine,6,month
+Vegetable Oil,1,month
+Salad Oil,2,month
+Peanut Butter,2,month
+Olive Oil,1,week
+Egg,5,week
+Chocolate Milk,7,month
+Dark Chocolate,1,year
+Cooked Rice,5,day
+Rice,6,month
+Pasta,5,month
+Cereal,6,month
+Bread,5,day
+Cake,1,week
+Dried Fruit,6,month
+Canned Fruit,12,month
+Pate,3,week
+Mayonnaise,2,month
+Ketchup,4,month
+Barbecue Sauce,4,month
+Fruit Juice,1,week
+Soft Drink,6,month
+Baby Food,6,month
+Apple,4,day
+Avocado,3,day
+Banana,4,day
+Blueberry,2,day
+Raspberry,2,day
+Blackberry,2,day
+Citrus,1,week
+Grapes,3,day
+Kiwi,2,day
+Melon,1,week
+Peach,3,day
+Pear,4,day
+Pineapple,2,day
+Strawberry,3,day
+Watermelon,3,day
+Canned Vegetable,3,day
+Asparagus,3,day
+Bean,3,day
+Broccoli,5,day
+Cabbage,1,month
+Carrot,1,month
+Capsicum,1,week
+Cauliflower,1,week
+Celery,3,week
+Corn,3,day
+Cucumber,10,day
+Eggplant,10,day
+Lettuce,10,day
+Mushroom,10,day
+Onion,1,month
+Pea,5,day
+Potato,2,month
+Tomato,5,day
