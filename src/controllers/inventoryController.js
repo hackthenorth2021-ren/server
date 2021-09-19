@@ -39,8 +39,8 @@ exports.getInventory = async function(req, res, next) {
         return {
           ...item,
           creationdate: creationDate,
-          expirydate: expiryDate,
-          expiresIn: expiresIn
+          expirydate: expiryDate || '',
+          expiresIn: expiresIn || ''
         }
       });
     res.send(JSON.stringify(result));
