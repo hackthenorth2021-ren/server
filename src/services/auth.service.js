@@ -16,11 +16,11 @@ async function auth(req, _res, next) {
       }
     } catch { }
   }
-  if (!isAuth) {
-    return next(new HttpError(403, 'Unauthorized'));
-  } else {
+  // if (!isAuth) {
+  //   return next(new HttpError(403, 'Unauthorized'));
+  // } else {
     next();
-  }
+  // }
 }
 
 module.exports = auth;
