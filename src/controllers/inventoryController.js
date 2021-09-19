@@ -50,12 +50,15 @@ exports.processReceipt = async function (req, res, next) {
   if (!validate(req, next)){
       return;
   }
-  
+  let destPath = undefined;
+
   try {
     const curPath = req.file.path;
     const curFileInfo = path.parse(curPath);
     const origFileInfo = path.parse(req.file.originalname);
-    const destPath = path.join(__dirname, 
+    const processedPath = path.resolve(__dirname, 
+      `../../uploads/${curFileInfo.name}_processed${origFileInfo.ext}`);
+    destPath = path.join(__dirname, 
       `../../uploads/${curFileInfo.base}${origFileInfo.ext}`);
     const fileExt = origFileInfo.ext.toLowerCase();
 
@@ -67,9 +70,7 @@ exports.processReceipt = async function (req, res, next) {
 
     const proc = spawn('python', [
       path.resolve(__dirname, '../../scripts/preprocess.py'),
-      destPath,
-      path.resolve(__dirname, 
-        `../../${curFileInfo.name}_processed${origFileInfo.ext}`)
+      destPath, processedPath
     ]);
   
     const matchedFoodNames = await new Promise((resolve, reject) => {
@@ -81,30 +82,34 @@ exports.processReceipt = async function (req, res, next) {
 
     res.send(JSON.stringify(newFoodItems));
   } catch (err) {
-    return next(err);
+    next(err);
+  } finally {
+    if (destPath) {
+      fs.unlink(destPath, () => { });
+    }
   }
 }
 
 exports.addFood = async function (req, res, next) {
-    if(!validate(req, next)){
-        return;
+  if(!validate(req, next)){
+      return;
+  }
+  const currentDate = new Date();
+  const foodItems = req.body.map((foodItem) => {
+    const creationDate = isoToTimestamp( foodItem.creationDate || currentDate);
+    let expiryDate = undefined;
+    if (foodItem.expiryDuration) {
+      expiryDate = isoToTimestamp( addDays(currentDate, foodItem.expiryDuration));
     }
-    const currentDate = new Date();
-    const foodItems = req.body.map((foodItem) => {
-      const creationDate = isoToTimestamp( foodItem.creationDate || currentDate);
-      let expiryDate = undefined;
-      if (foodItem.expiryDuration) {
-        expiryDate = isoToTimestamp( addDays(currentDate, foodItem.expiryDuration));
-      }
-      return { name: foodItem.name, type: 'other', creationDate, expiryDate };
-    });
+    return { name: foodItem.name, type: 'other', creationDate, expiryDate };
+  });
 
-    try {
-      await model.addFood(req.query.user, foodItems);
-      res.send(`Successfully added ${foodItems.length} food items.`);
-    } catch (err) {
-      next(err);
-    }
+  try {
+    await model.addFood(req.query.user, foodItems);
+    res.send(`Successfully added ${foodItems.length} food items.`);
+  } catch (err) {
+    next(err);
+  }
 }
 
 exports.deleteFood = async function (req, res, next) {

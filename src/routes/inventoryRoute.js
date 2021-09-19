@@ -11,5 +11,4 @@ router.post('/process-receipt', upload.single('receipt'), processReceipt);
 router.post('/add-food', addFoodSchema, addFood);
 router.delete('/delete-food', deleteFoodSchema, deleteFood);
 
-
 module.exports = router;

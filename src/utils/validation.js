@@ -45,6 +45,20 @@ exports.getRecipeSchema = [
     .isString()
 ]
 
+exports.addRecipeSchema = [
+  query('user')
+    .notEmpty()
+    .isString(),
+  query('name')
+    .notEmpty()
+    .isString(),
+  query('prepTime')
+    .notEmpty(),
+  query('directions')
+    .notEmpty()
+    .isString()
+]
+
 exports.validate = function (req, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
