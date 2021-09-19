@@ -5,6 +5,7 @@ exports.getRecipes = function(req, res, next) {
   if (!validate(req, next)) {
     return;
   }
-  const result = model.getRecipes();
+  let { user } = req.query;
+  const result = model.getRecipes(user);
   return result;
 }

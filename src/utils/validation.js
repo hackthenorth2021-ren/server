@@ -13,12 +13,30 @@ exports.getInventorySchema = [
     .isString()
 ];
 
+exports.addFoodSchema = [
+  query('user')
+    .notEmpty()
+    .isString(),
+  body('*.name')
+    .notEmpty()
+    .isString(),
+  body('*.currentDate')
+    .optional()
+    .isISO8601()
+    .toDate(),
+  body('*.expiryDuration')
+    .optional()
+    .isNumeric()
+    .toInt()
+]
+
 exports.deleteFoodSchema= [
   query('user')
     .notEmpty()
     .isString(),
-  query('id')
+  body('*')
     .notEmpty()
+    .isString()
 ]
 
 exports.getRecipeSchema = [
