@@ -31,7 +31,7 @@ exports.getInventory = async function(req, res, next) {
     const result = (await model.getInventory(user, search, orderParam, order))
       .map(item => {
         const creationDate = new Date(item.creationdate);
-        const expiryDate = item.expiryDate ? 
+        const expiryDate = item.expirydate ? 
           new Date(item.expirydate) : undefined;
         const expiresIn = expiryDate ? 
           formatDistance(expiryDate, creationDate, { addSuffix: true })
@@ -40,7 +40,7 @@ exports.getInventory = async function(req, res, next) {
           ...item,
           creationdate: creationDate,
           expirydate: expiryDate || '',
-          expiresIn: expiresIn || ''
+          expiresIn: `Expires ${expiresIn || ''}`
         }
       });
     res.send(JSON.stringify(result));
